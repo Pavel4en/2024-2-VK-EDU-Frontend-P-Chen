@@ -18,14 +18,15 @@
  */
 
 export default function convertBytesToHuman(bytes) {
-  if (typeof bytes !== 'number' || bytes < 0) {
+  if (typeof bytes !== 'number' || bytes < 0 || isNaN(bytes)) {
     return false;
   }
 
+  const integerBytes = Math.floor(bytes);
   const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
   
   let i = 0;
-  let size = bytes;
+  let size = integerBytes;
 
   while (size >= 1024 && i < units.length - 1) {
     size /= 1024;

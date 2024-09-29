@@ -18,9 +18,15 @@ correctSentence("Greetings, friends.") == "Greetings, friends."
  */
 
 export default function correctSentence(text) {
-  if (!text) return text;
+  if (!text) {
+    return text;
+  }
 
-  const capitalizedText = text.charAt(0).toUpperCase() + text.slice(1);
+  const firstNonSpaceIndex = text.search(/\S|$/);
+  const capitalizedText =
+    text.slice(0, firstNonSpaceIndex) +
+    text.charAt(firstNonSpaceIndex).toUpperCase() +
+    text.slice(firstNonSpaceIndex + 1);
 
-  return capitalizedText.endsWith('.') ? capitalizedText : capitalizedText + '.';
+  return capitalizedText.endsWith('.') ? capitalizedText : `${capitalizedText}.`;
 }

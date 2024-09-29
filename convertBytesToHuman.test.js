@@ -34,3 +34,12 @@ test('Пограничные случаи', () => {
   expect(convertBytesToHuman(1073741824)).toBe('1 GB');
 });
 
+test('Возвращает false для NaN', () => {
+  expect(convertBytesToHuman(NaN)).toBe(false);
+});
+
+test('Игнорирует дробную часть у чисел с плавающей запятой', () => {
+  expect(convertBytesToHuman(1024.5)).toBe('1 KB');
+  expect(convertBytesToHuman(1234567.89)).toBe('1.18 MB');
+  expect(convertBytesToHuman(512.9)).toBe('512 B');
+});

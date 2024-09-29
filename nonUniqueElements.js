@@ -30,6 +30,6 @@ export default function nonUniqueElements(data) {
     return countMap;
   }, {});
 
-  return data.filter(item => elementCount[item] > 1);
+  return data.filter((item) => elementCount[item] > 1);
 }
 
